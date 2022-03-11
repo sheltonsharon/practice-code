@@ -12,6 +12,8 @@
 
 //for a default export, the paricular function/variable can be exported only once per module
 //for default import(values that are exported as default) curly braces are not necessary
+
+//node-fetch
 const fetch = require("node-fetch");
 fetch("https://jsonplaceholder.typicode.com/todos/1")
   .then((res) => {
