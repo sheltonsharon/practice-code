@@ -1,0 +1,35 @@
+<html>
+  <head>
+    -----Heading goes here-----
+  </head>
+  <body>
+    <p id="p"></p>
+    <br />
+    <p id="p1"></p>
+  </body>
+  <script>
+    const url = "https://jsonplaceholder.typicode.com/todos/1";
+    fetch(url)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        document.getElementById("p").innerHTML = JSON.stringify(res);
+      });
+    const request = new XMLHttpRequest();
+    request.addEventListener("load", reqListener); //load-->transfer is complete
+    function reqListener() {
+      //console.log(this.responseText);
+      document.getElementById("p1").innerHTML = JSON.stringify(
+        this.responseText
+      );
+    }
+    request.open("GET", url); //third argument is sync or async, by default it is async
+    request.send();
+    sessionStorage.setItem("key", "value"); //removeItem to delete the item
+    console.log(sessionStorage.getItem("key")); //returns value
+    localStorage.setItem("cat", "Tom");
+    console.log(localStorage.getItem("cat")); //Tom
+    localStorage.removeItem("cat");
+    console.log(localStorage.getItem("cat")); //null
+  </script>
+</html>
