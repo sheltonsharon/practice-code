@@ -125,4 +125,68 @@ OBJECTS:--------------
 -->GC cannot be forced or prevented in JS
 -->typeof new Number(0)//object
 -->Primitives are not objects//strings are not objects
+
+FUNCTIONS:-----------------
+-->Parameters are passed into the functions as values.
+-->If object is passed as a parameter and the function changes the value the property,
+the changes will be reflected outside of the function as well.
+-->function declration loads before any code is executed 
+-->Function expressions are executed only when that line is reached by interpreter
+-->Function expressions need not have any name, they can be called with the variable name in which they are stored
+-->The value of the parameters by default is "undefined"
+-->rest parameter allows to represent an indefinite number of arguments as an array.
+-->If a function is a part of an object, it is known as a method
+
+
+call():
+-->This is used to borrow methods from other objects.
+-->borrow_from_object.function_to_be_borrowed.call(borrowing_object);
+-->changes the 'this' reference to the object specified in the bracket
+
+Linting:
+-->Linting is the process of making the code consistent and avoiding bugs.
+-->To execute linting in a file:
+-->npm install eslint --save-dev//installing
+-->npm init @eslintconfig //assumes that package.json file is already present
+-->if just want to run it on a file
+-->npm init
+-->npx eslint file_name.js
+
+Rome
+-->Has better linting features
+-->It provides information on how to fix the error
+-->issues can be resolved in CLI itself
+
+
+-->"npm init -y" will create a package.json file
+
+MODULE BUNDLERS:-------------------------------
+-->Most of the dependencies use CJS syntax which isn't going to work with ESM syntax.
+-->npm init -y-->will create a package.json file in that folder
+-->npm install lodash-->creates node modules and add lodash to dependency object in package.json
+-->create index.html file in public folder in main folder. Create a boiler plate code for html and then include the path of the js file in the script scr tag.
+-->browser doesn't know how to resolve the lodash code
+-->in other words, we are asking it to find something which it has no idea where to find
+-->there is where something like webpack can help us out
+-->To use it we need to install it as a development dependency "npm install --save-dev webpack webpack-cli"
+-->include "build":"webpack" in scripts object of the package.json for production
+-->run webpack by running the command "npm run build" from command line
+-->webpack will anayse the code in the index.js file and then compile it to a dist/main.js file which is our production code.
+--> Production code is the code that is shipped to the end user in the browser
+-->Now in index.html change the path of the scr to main.js file of dist
+-->But right now it is the default webpack config
+-->it looks for the source index.js file, if the file name is something else, this won't work
+-->In most cases, we will want to customize the behavior of the webpack
+-->In that case we can create a webpack.config.js
+-->It is a module which exports an object that customises the behavior of the webpack
+-->import sass file in index.js file so that it is made known to the webpack
+-->trying to compile this file will throw an error that no loader has been configured to process this file
+-->In webpack loader is used to preprocess a file that aren't JS
+-->npm install --save-dev css-loader style-loader sass-loader
+-->in webpack.config file, create an object called module, that assigns some rules for which loader to process which files
+-->so now when we have defined which loader is for which file, scss will be processed to normal css and then to js so that it is eventually injected into an HTML page
+
+-->Assigning same value to all the objects of the function constructor can be done with the help of prototype
+-->eg: Person.prototype.age = 20
+
 ```
